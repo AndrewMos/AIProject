@@ -1,4 +1,4 @@
 # AIProject
 
-Project from AI 
+Project from AI \n
 Topic: "Beer delivery with recommendations"
