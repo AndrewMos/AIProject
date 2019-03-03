@@ -3,46 +3,37 @@ import sys
 import random
 
 class Canvas:
-    def draw(self):
+    def draw(self, redrw=1):
         for line in self.grid:
             for element in line:
                 sys.stdout.write(str(element) + " ")
                 # sys.stdout.flush()
             sys.stdout.write('\n')
             sys.stdout.flush()
+        if (redrw==1):
+            self.redraw()
 
-    def point(self, x, y):
-        self.grid[y-1][x-1] = '@'
+    def point(self, x, y, char='@'):
+        self.grid[y-1][x-1] = char
 
     def clear(self):
         for j in range(0, self.height):
             for i in range(0, self.width):
-                self.grid[j][i] = '_'
+                self.grid[j][i] = self.back
 
     def redraw(self):
         sys.stdout.write("\033[F"*(self.height))
         # sys.stdout.flush()
 
-    def __init__(self, width, height):
+    def __init__(self, width, height, back='*'):
         self.width = width
         self.height = height
+        self.back = back
         grid = []
 
         for j in range(0, height):
             temp = []
             for i in range(0, width):
-                temp.append('*')
+                temp.append(back)
             grid.append(temp)
         self.grid = grid
-
-
-
-
-
-canvas = Canvas(20, 20)
-while True:
-    canvas.point(random.randint(1, 20), random.randint(1, 20))
-    canvas.draw()
-    time.sleep(3)
-    canvas.clear()
-    canvas.redraw()
