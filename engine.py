@@ -13,8 +13,19 @@ class Canvas:
         if (redrw==1):
             self.redraw()
 
+    # def floatpoint(self, x, y, char='@'):
+    #     x = round(x)
+    #     y = round(y)
+    #     if (x >= 0 and x < self.width):
+    #         if(y >= 0 and y < self.height):
+    #             self.grid[y][x] = char
+
     def point(self, x, y, char='@'):
-        self.grid[y-1][x-1] = char
+        x = round(x)
+        y = round(y)
+        if (x >= 0 and x < self.width):
+            if(y >= 0 and y < self.height):
+                self.grid[y][x] = char
 
     def clear(self):
         for j in range(0, self.height):
