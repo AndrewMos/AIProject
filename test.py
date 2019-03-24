@@ -7,7 +7,7 @@ black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-ball = pygame.image.load("img.jpg")
+ball = pygame.image.load("Tractor.png")
 ballrect = ball.get_rect()
 
 while 1:
