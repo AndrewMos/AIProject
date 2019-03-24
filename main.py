@@ -3,8 +3,8 @@ import sys, pygame
 import numpy as np
 
 pygame.init()
-
 size = width, height = 400, 400
+
 
 class Home:
     def __init__(self, x, y, name):
@@ -46,9 +46,9 @@ class Agent:
         self.x += -1
 
 screen = pygame.display.set_mode(size)
-grid = pygame.image.load("grid.png")
-home = pygame.image.load("home.png")
-agent = pygame.image.load("agent.png")
+grid = pygame.image.load("media/grid.png")
+home = pygame.image.load("media/home.png")
+agent = pygame.image.load("media/agent.png")
 gridrect = agent.get_rect()
 homerect = home.get_rect()
 agentrect = agent.get_rect()
@@ -68,7 +68,7 @@ def draw(m):
 
 robot = Agent(5, 5)
 m = Map(20, 20)
-coordinates = [[2,2], [2,4], [2,6], [6,2], [6,5]]
+coordinates = [[2,2], [2,4], [2,6], [6,2], [6,5], [6, 8], [6, 11], [10, 2], [10, 6]]
 for line in coordinates:
     hm = Home(line[0], line[1], "Andrew")
     m.addhome(hm)
