@@ -8,6 +8,9 @@ def heuristic(a, b):
 
 def astar(array, start, goal):
 
+    #wtf, realy dont know wtf
+    start = (start[0]-1, start[1])
+
     neighbors = [(0,1),(0,-1),(1,0),(-1,0)]
 
     close_set = set()
@@ -68,6 +71,5 @@ nmap = numpy.array([
     [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
 
-print (astar(nmap, (0,0), (10,13)))
 
 draw (nmap, astar(nmap, (0,0), (10,13)))
