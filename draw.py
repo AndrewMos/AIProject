@@ -4,6 +4,10 @@ import numpy as np
 
 
 def draw(map, steps):
+
+    map = np.asarray(map)
+
+
     pygame.init()
     grid = pygame.image.load("media/grid.png")
     home = pygame.image.load("media/home.png")
@@ -23,10 +27,10 @@ def draw(map, steps):
     for line in map:
         x = w/2
         for obj in line:
-            if obj == ' ':
+            if obj == 0:
                 gridrect.center = (x, y)
                 screen.blit(grid, gridrect)
-            if obj == '#':
+            if obj == 1:
                 homerect.center = (x, y)
                 screen.blit(home, homerect)
             if obj == 'o':
@@ -44,8 +48,8 @@ def draw(map, steps):
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
 
-        for s in steps[1:-1]:
-            steprect.center = (s[0]*w + w/2, s[1]*h+h/2)
+        for s in steps:
+            steprect.center = ((s[1])*w + w/2, (s[0])*h+h/2)
             screen.blit(step, steprect)
             pygame.display.flip()
             time.sleep(0.4)

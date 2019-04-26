@@ -1,6 +1,7 @@
 import math
 from simpleai.search import SearchProblem, astar
 from draw import *
+import numpy as np
 
 class MazeSolver(SearchProblem):
     # Initialize the class
@@ -55,15 +56,17 @@ if __name__ == '__main__':
 ######    ########       ## ##
 #  o #    #  #           #   #
 #    ###     #####  ######   #
-#      #   ###   #           #
+#      #   ###      #        #
 #      #     #   #  #  #   ###
-#     ## ##   ##    #  #     #
+#     ## ##   #     #  #     #
 #              #       #   x #
 ##############################"""
 
 
+
     # print(MAP)
     MAP = [list(x) for x in MAP.split("\n") if x]
+    print(MAP)
     cost_regular = 1.0
     COSTS = {
         "up": cost_regular,
@@ -77,19 +80,4 @@ if __name__ == '__main__':
     path = [x[1] for x in result.path()]
 
 
-    draw(MAP, path)
-
-
-    print()
-    for y in range(len(MAP)):
-        for x in range(len(MAP[y])):
-            if (x, y) == problem.initial:
-                print('o', end='')
-            elif (x, y) == problem.goal:
-                print('x', end='')
-            elif (x, y) in path:
-                print('·', end='')
-            else:
-                print(MAP[y][x], end="")
-
-        print()
+    print(MAP, path)
