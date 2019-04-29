@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 import random, time
 import sys, pygame
 import numpy as np
@@ -34,42 +41,41 @@ def draw(map, steps):
     size = width, height = len(map[0])*w, len(map)*h
     screen = pygame.display.set_mode(size)
 
-
-    y = h/2
-    for line in map:
-        x = w/2
-        for obj in line:
-            if obj == 0:
-                gridrect.center = (x, y)
-                screen.blit(grid, gridrect)
-            if obj == 1:
-                homerect.center = (x, y)
-                screen.blit(home, homerect)
-
-            x += w
-        y += h
-
-
-
-
-    warehouserect.center = ((steps[-1][1])*w + w/2, (steps[-1][0])*h+h/2)
-    screen.blit(warehouse, warehouserect)
-
-
     for s, ns in zip(steps[0: -1], steps[1:]):
+        y = h/2
+        for line in map:
+            x = w/2
+            for obj in line:
+                if obj == 0:
+                    gridrect.center = (x, y)
+                    screen.blit(grid, gridrect)
+                if obj == 1:
+                    homerect.center = (x, y)
+                    screen.blit(home, homerect)
+
+                x += w
+            y += h
+
+
+
+
+    # agentrect.center = ((steps[0][1])*w + w/2, (steps[0][0])*h+h/2)
+    # screen.blit(agent, agentrect)
+
+        warehouserect.center = ((steps[-1][1])*w + w/2, (steps[-1][0])*h+h/2)
+        screen.blit(warehouse, warehouserect)
+
+
+
         agentrect.center = ((s[1])*w + w/2, (s[0])*h+h/2)
 
         newdir = direction(s, ns)
 
         screen.blit(pygame.transform.rotate(agent, 90*newdir), agentrect)
         pygame.display.flip()
-
-        time.sleep(0.3)
-
-        steprect.center = ((s[1])*w + w/2, (s[0])*h+h/2)
-        screen.blit(step, steprect)
+        time.sleep(1)
 
 
-    while(True):
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: sys.exit()
+    # while(True):
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT: sys.exit()
